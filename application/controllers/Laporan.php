@@ -49,6 +49,36 @@ class Laporan extends CI_Controller
     $this->load->view('booking/export_excel_bukti_booking', $data);
   }
 
+  public function cetak_laporan_member()
+  {
+    $data['judul'] = 'Laporan Data Member';
+    $data['user'] = $this->user_model->get_data_user()->result_array();
+    $this->load->view('member/laporan_print_member', $data);
+  }
+
+  public function laporan_member_pdf()
+  {
+    $data['user'] = $this->user_model->get_data_user()->result_array();
+    $data['judul'] = "Cetak Data Member";
+
+    $root = $_SERVER['DOCUMENT_ROOT'];
+    include $root = '/xampp/htdocs/asrog_webpro_2/application/third_party/dompdf/autoload.inc.php';
+    $dompdf = new Dompdf\Dompdf();
+
+    $this->load->view('member/member-pdf', $data);
+
+    $paper_size = 'A4'; // ukuran kertas
+    $orientation = 'landscape'; //tipe format kertas potrait atau landscape
+
+    $html = $this->output->get_output();
+  }
+
+  public function export_excel_member()
+  {
+    $data = array('title' => 'Laporan Data Member', 'user' => $this->user_model->get_data_user()->result_array());
+    $this->load->view('member/export_excel_member', $data);
+  }
+
   //   public function laporan_pinjam()
   //   {
   //     $data['judul'] = 'Laporan Data Peminjaman';

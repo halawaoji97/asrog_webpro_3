@@ -64,6 +64,17 @@
 
         <div class="table-payment">
             <div class="box">
+                <div class="action" style="display: flex; ">
+                    <a href="<?= base_url('laporan/cetak_laporan_member'); ?>" class="btn-print" title="Print">
+                        <i class='bx bx-printer'></i>
+                    </a>
+                    <a href="<?= base_url('laporan/laporan_member_pdf'); ?>" class="btn-pdf" title="PDF">
+                        <i class='bx bxs-file-pdf'></i>
+                    </a>
+                    <a href="<?= base_url('laporan/export_excel_member'); ?>" class="btn-excel" title="Excel">
+                        <i class='bx bx-receipt'></i>
+                    </a>
+                </div>
                 <div class="title">The last booking of this month</div>
                 <p style="margin-bottom: 10px;">this booking table can be updated by clicking the booking menu.</p>
                 <table>
