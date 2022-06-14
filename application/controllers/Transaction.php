@@ -132,7 +132,7 @@ class Transaction extends CI_Controller
         $data['judul'] = "Cetak Bukti Booking";
 
         $root = $_SERVER['DOCUMENT_ROOT'];
-        include $root = '/xampp/htdocs/asrog_webpro_2/application/third_party/dompdf/autoload.inc.php';
+        include $root = '/xampp/htdocs/asrog_webpro_3/application/third_party/dompdf/autoload.inc.php';
         $dompdf = new Dompdf\Dompdf();
 
         $this->load->view('booking/bukti-pdf', $data);

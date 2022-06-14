@@ -19,7 +19,7 @@ class Laporan extends CI_Controller
     $data['judul'] = "Cetak Data Booking Terbaru";
 
     $root = $_SERVER['DOCUMENT_ROOT'];
-    include $root = '/xampp/htdocs/asrog_webpro_2/application/third_party/dompdf/autoload.inc.php';
+    include $root = '/xampp/htdocs/asrog_webpro_3/application/third_party/dompdf/autoload.inc.php';
     $dompdf = new Dompdf\Dompdf();
 
     $this->load->view('booking/laporan_booking_pdf', $data);
@@ -49,7 +49,7 @@ class Laporan extends CI_Controller
     $data['judul'] = "Cetak Bukti Booking";
 
     $root = $_SERVER['DOCUMENT_ROOT'];
-    include $root = '/xampp/htdocs/asrog_webpro_2/application/third_party/dompdf/autoload.inc.php';
+    include $root = '/xampp/htdocs/asrog_webpro_3/application/third_party/dompdf/autoload.inc.php';
     $dompdf = new Dompdf\Dompdf();
 
     $this->load->view('booking/bukti-pdf', $data);
@@ -79,7 +79,7 @@ class Laporan extends CI_Controller
     $data['judul'] = "Cetak Data Member";
 
     $root = $_SERVER['DOCUMENT_ROOT'];
-    include $root = '/xampp/htdocs/asrog_webpro_2/application/third_party/dompdf/autoload.inc.php';
+    include $root = '/xampp/htdocs/asrog_webpro_3/application/third_party/dompdf/autoload.inc.php';
     $dompdf = new Dompdf\Dompdf();
 
     $this->load->view('member/member-pdf', $data);
@@ -109,7 +109,7 @@ class Laporan extends CI_Controller
     $data['judul'] = "Cetak Data Kost";
 
     $root = $_SERVER['DOCUMENT_ROOT'];
-    include $root = '/xampp/htdocs/asrog_webpro_2/application/third_party/dompdf/autoload.inc.php';
+    include $root = '/xampp/htdocs/asrog_webpro_3/application/third_party/dompdf/autoload.inc.php';
     $dompdf = new Dompdf\Dompdf();
 
     $this->load->view('kost/laporan_kost_pdf', $data);
