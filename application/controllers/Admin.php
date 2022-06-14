@@ -125,6 +125,53 @@ class Admin extends CI_Controller
         $this->load->view('templates/dashboard_footer', $data);
     }
 
+    public function addKost()
+    {
+
+        // SET RULES
+        $this->form_validation->set_rules('kode_kost', 'Kode Kost', 'required|trim');
+
+        $data['title'] = 'Add Kost';
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/dashboard_header', $data);
+            $this->load->view('templates/dashboard_sidebar', $data);
+            $this->load->view('admin/add_kost', $data);
+            $this->load->view('templates/dashboard_footer', $data);
+        } else {
+            $uploadImage = $_FILES['image']['name'];
+
+            if ($uploadImage) {
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size']     = '2048';
+                $config['upload_path'] = './assets/images/';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('image')) {
+                    $new_image = $this->upload->data('file_name');
+                    $this->db->set('image_primary', $new_image);
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
+
+            $data = [
+                'kode_kost' => $this->input->post('kode_kost'),
+                'room_size' => $this->input->post('room_size'),
+                'room_qty' => $this->input->post('room_qty'),
+                'price' => $this->input->post('price'),
+                'facility' => $this->input->post('facility'),
+                'empty' => $this->input->post('empty'),
+                'filled' => $this->input->post('filled'),
+                'full_address' => $this->input->post('full_address'),
+                'description' => $this->input->post('description'),
+                'image_primary' => $uploadImage
+            ];
+            $this->db->insert('kost', $data);
+            redirect('admin/listKost');
+        }
+    }
+
     public function deleteKost($id)
     {
         $this->kost_model->delete_kost($id);

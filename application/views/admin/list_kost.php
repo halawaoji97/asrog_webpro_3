@@ -7,7 +7,7 @@
     </nav>
     <div class="home-content">
         <div class="action-admin">
-            <a href="<?= base_url('admin/add'); ?>" class="add"><i class='bx bxs-user-plus'></i></a>
+            <a href="<?= base_url('admin/addKost'); ?>" class="add"><i class='bx bx-home-heart'></i></a>
         </div>
 
         <div class="overview-boxes member list-kost">
