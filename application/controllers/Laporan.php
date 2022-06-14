@@ -96,53 +96,33 @@ class Laporan extends CI_Controller
     $this->load->view('member/export_excel_member', $data);
   }
 
-  //   public function laporan_pinjam()
-  //   {
-  //     $data['judul'] = 'Laporan Data Peminjaman';
-  //     $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
-  //     $data['laporan'] = $this->db->query("select * from pinjam p,detail_pinjam d,buku b,user u where d.id_buku=b.id and p.id_user=u.id and p.no_pinjam=d.no_pinjam")->result_array();
-  //     $this->load->view('templates/header', $data);
-  //     $this->load->view('templates/sidebar');
-  //     $this->load->view('templates/topbar', $data);
-  //     $this->load->view('pinjam/laporan-pinjam', $data);
-  //     $this->load->view('templates/footer');
-  //   }
+  public function cetak_laporan_kost()
+  {
+    $data['judul'] = 'Laporan Data Kost';
+    $data['kost'] = $this->kost_model->get_data_kost()->result_array();
+    $this->load->view('kost/laporan_print_kost', $data);
+  }
 
-  //   public function cetak_laporan_pinjam()
-  //   {
-  //     $data['laporan'] = $this->db->query("select * from pinjam p,detail_pinjam d,buku b,user u where d.id_buku=b.id and p.id_user=u.id and p.no_pinjam=d.no_pinjam")->result_array();
-  //     $this->load->view('pinjam/laporan-print-pinjam', $data);
-  //   }
+  public function laporan_kost_pdf()
+  {
+    $data['kost'] = $this->kost_model->get_data_kost()->result_array();
+    $data['judul'] = "Cetak Data Kost";
 
-  //   public function laporan_pinjam_pdf()
-  //   { {
-  //       $this->load->library('dompdf_gen');
+    $root = $_SERVER['DOCUMENT_ROOT'];
+    include $root = '/xampp/htdocs/asrog_webpro_2/application/third_party/dompdf/autoload.inc.php';
+    $dompdf = new Dompdf\Dompdf();
 
-  //       $data['laporan'] = $this->db->query("select * from pinjam p,detail_pinjam d,
-  //  buku b,user u where d.id_buku=b.id and p.id_user=u.id
-  //  and p.no_pinjam=d.no_pinjam")->result_array();
+    $this->load->view('kost/laporan_kost_pdf', $data);
 
-  //       $this->load->view('pinjam/laporan-pdf-pinjam', $data);
+    $paper_size = 'A4'; // ukuran kertas
+    $orientation = 'landscape'; //tipe format kertas potrait atau landscape
 
-  //       $paper_size = 'A4'; // ukuran kertas
-  //       $orientation = 'landscape'; //tipe format kertas potrait atau landscape
-  //       $html = $this->output->get_output();
+    $html = $this->output->get_output();
+  }
 
-  //       $this->dompdf->set_paper($paper_size, $orientation);
-  //       //Convert to PDF
-  //       $this->dompdf->load_html($html);
-  //       $this->dompdf->render();
-  //       $this->dompdf->stream("laporan data peminjaman.pdf", array('Attachment' => 0));
-  //       // nama file pdf yang di hasilkan
-  //     }
-  //   }
-
-  //   public function export_excel_pinjam()
-  //   {
-  //     $data = array(
-  //       'title' => 'Laporan Data Peminjaman Buku',
-  //       'laporan' => $this->db->query("select * from pinjam p,detail_pinjam d, buku b,user u where d.id_buku=b.id and p.id_user=u.id and p.no_pinjam=d.no_pinjam")->result_array()
-  //     );
-  //     $this->load->view('pinjam/export-excel-pinjam', $data);
-  //   }
+  public function export_excel_kost()
+  {
+    $data = array('title' => 'Laporan Data Kost', 'kost' => $this->kost_model->get_data_kost()->result_array());
+    $this->load->view('kost/export_excel_kost', $data);
+  }
 }

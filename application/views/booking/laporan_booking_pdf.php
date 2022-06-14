@@ -30,6 +30,8 @@
         <th>Kost Location</th>
         <th>Price</th>
         <th>Start Date</th>
+        <th>Status Payment</th>
+        <th>Status Payment</th>
         <th>Status Booking</th>
       </tr>
     </thead>
@@ -51,6 +53,13 @@
           <td><?= $t['kost_location']; ?></td>
           <td><?= $t['price']; ?></td>
           <td><?= $t['start_date']; ?></td>
+          <td>
+            <?php if ($t['payment_image'] !== '') : ?>
+              <span class="badge badge-danger">Paid</span>
+            <?php else : ?>
+              <span class="badge badge-success">Unpaid</span>
+            <?php endif; ?>
+          </td>
           <td><?= $t['status']; ?></td>
         </tr>
       <?php
