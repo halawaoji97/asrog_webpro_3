@@ -6,18 +6,35 @@ class Laporan extends CI_Controller
   {
     parent::__construct();
   }
-  // public function laporan_booking()
-  // {
-  //   $data['judul'] = 'Laporan Data Buku';
-  //   $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
-  //   $data['buku'] = $this->ModelBuku->getBuku()->result_array();
-  //   $data['kategori'] = $this->ModelBuku->getKategori()->result_array();
-  //   $this->load->view('templates/header', $data);
-  //   $this->load->view('templates/sidebar', $data);
-  //   $this->load->view('templates/topbar', $data);
-  //   $this->load->view('buku/laporan_buku', $data);
-  //   $this->load->view('templates/footer');
-  // }
+  public function cetak_laporan_booking()
+  {
+    $data['judul'] = 'Laporan Data Booking';
+    $data['transaksi'] = $this->db->get('transaksi')->result_array();
+    $this->load->view('booking/laporan_print_booking', $data);
+  }
+
+  public function laporan_booking_pdf()
+  {
+    $data['transaksi'] = $this->db->get('transaksi')->result_array();
+    $data['judul'] = "Cetak Data Booking Terbaru";
+
+    $root = $_SERVER['DOCUMENT_ROOT'];
+    include $root = '/xampp/htdocs/asrog_webpro_2/application/third_party/dompdf/autoload.inc.php';
+    $dompdf = new Dompdf\Dompdf();
+
+    $this->load->view('booking/laporan_booking_pdf', $data);
+
+    $paper_size = 'A4'; // ukuran kertas
+    $orientation = 'landscape'; //tipe format kertas potrait atau landscape
+
+    $html = $this->output->get_output();
+  }
+
+  public function export_excel_booking()
+  {
+    $data = array('title' => 'Laporan Data Booking Terbaru', 'transaksi' => $this->db->get('transaksi')->result_array());
+    $this->load->view('booking/export_excel_booking', $data);
+  }
 
   public function cetak_laporan_bukti_booking()
   {
