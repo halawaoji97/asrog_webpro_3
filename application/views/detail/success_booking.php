@@ -171,6 +171,10 @@
                     <a href="<?= base_url('auth'); ?>">Go to Profile</a>
                 </div>
             </div>
+            <div class="footer-card">
+                <div class="chat" style="margin-top: 40px;">
+                    <a href="<?php echo base_url() . 'Transaction/exportToPdf/' . $this->session->userdata('id_user'); ?>">Print Pdf</a>
+                </div>
         </form>
     </div>
 </body>

@@ -79,7 +79,6 @@ class Admin extends CI_Controller
     {
         $this->form_validation->set_rules('name', 'Full Name', 'required|trim');
         $this->form_validation->set_rules('kost', 'Kost', 'required|trim');
-        $this->form_validation->set_rules('kost_location', 'Kost Location', 'required|trim');
 
         $user_id = $this->uri->segment(3);
         $data['user'] = $this->db->get_where('user', ['id' => $user_id])->row_array();
@@ -96,13 +95,10 @@ class Admin extends CI_Controller
             $this->load->view('templates/dashboard_footer', $data);
         } else {
             $id = $this->input->post('id');
-            $inputDate = htmlspecialchars($this->input->post('member_since', true));
-            $new_member_since = date("d-m-Y", strtotime($inputDate));
             $data = [
                 'name'          => htmlspecialchars($this->input->post('name', true)),
                 'kost'          => htmlspecialchars($this->input->post('kost', true)),
                 'kost_location' => htmlspecialchars($this->input->post('kost_location', true)),
-                'member_since' => $new_member_since,
             ];
             $where = array(
                 'id' => $id

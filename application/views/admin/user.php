@@ -10,33 +10,46 @@
             <a href="<?= base_url('admin/add'); ?>" class="add"><i class='bx bxs-user-plus'></i></a>
         </div>
 
-        <div class="overview-boxes member">
-            <?php foreach ($users as $user) : ?>
-                <div class="box">
-                    <div href="" class="card-user">
-                        <div class="picture-profile">
-                            <img src="<?= base_url('assets/images/profil/') . $user['image']; ?>" alt="<?= $user['name']; ?>">
-                        </div>
-                        <div class="right-side">
-                            <!-- <a href="" class="card-link"> -->
+        <div class="table-payment">
+            <div class="box">
+                <div class="title">Member List</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Kost</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Start Date</th>
+                            <th scope="col">Status Booking</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($users as $user) : ?>
+                            <tr>
+                                <td data-label="Name"><?= $user['name']; ?></td>
+                                <td data-label="Phone"><?= $user['telp']; ?></td>
+                                <td data-label="Email"><?= $user['email']; ?></td>
+                                <td data-label="Address"><?= $user['address']; ?></td>
+                                <td data-label="Kost"><?= $user['kost']; ?></td>
+                                <td data-label="Price"><?= $user['price']; ?></td>
+                                <td data-label="Start Date"><?= $user['startDate']; ?></td>
+                                <td data-label="Status Booking"><?= $user['status_booking']; ?></td>
+                                <td data-label="Action">
+                                    <a style="margin-right: 10px; padding: 4px; background-color: red;color:aliceblue;" onclick="return confirm('are you sure want to delete this member?')" href="<?= base_url('admin/deleteUser/'); ?><?= $user['id']; ?>" class="remove"><i class='bx bx-minus'></i></a>
 
-                            <h3 class="user-name"><?= $user['name']; ?></h3>
-                            <!-- </a> -->
-                            <div class="indicator">
-                                <i class='bx bxs-envelope' style="font-size: 14px;"></i>
-                                <span class="text"><?= $user['email']; ?></span>
-                            </div>
-                        </div>
-                        <div class="devider"></div>
-                    </div>
-                    <div class="action">
-                        <a onclick="return confirm('are you sure want to delete this member?')" href="<?= base_url('admin/deleteUser/'); ?><?= $user['id']; ?>" class="remove"><i class='bx bx-minus'></i></a>
-                        <a href="<?= base_url('admin/editUser/'); ?><?= $user['id']; ?>" id="btn-edit" class="btn edit" title="edit"><i class='bx bxs-edit-alt'></i></a>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+                                    <a href="<?= base_url('admin/editUser/'); ?><?= $user['id']; ?>" id="btn-edit" class="btn edit" title="edit" style="margin-right: 10px;color:aliceblue; padding: 4px; background-color: green;"><i class='bx bx-edit'></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
-
 
     </div>
     </div>

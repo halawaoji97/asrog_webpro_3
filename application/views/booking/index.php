@@ -11,6 +11,7 @@
       <div class="box">
         <div class="title">The last booking of this month</div>
         <p style="margin-bottom: 10px;">this booking table can be updated by clicking the booking menu.</p>
+        <a href="<?= base_url('laporan/cetak_laporan_bukti_booking'); ?>" class="btn btn-primary mb-3"><i class="fas fa-print"></i> Print</a>
         <table>
           <thead>
             <tr>

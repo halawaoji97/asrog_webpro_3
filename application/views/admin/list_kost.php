@@ -23,15 +23,47 @@
                                 <span class="text"><?= $k['full_address']; ?></span>
                             </div>
                         </div>
-                        <div class="devider"></div>
-                        <div class="action">
-                            <a onclick="return confirm('are you sure want to delete this kost?')" href="<?= base_url('admin/deleteKost/'); ?><?= $k['id']; ?>" class="remove">Delete</a>
-                            <a href="<?= base_url('admin/editKost/'); ?><?= $k['id']; ?>" id="btn-edit" class="btn edit" title="edit">Edit</a>
-                        </div>
                     </div>
 
                 </div>
             <?php endforeach; ?>
+        </div>
+
+        <div class="table-payment">
+            <div class="box">
+                <div class="title">List Kost</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Location</th>
+                            <th scope="col">Room Size</th>
+                            <th scope="col">Total Room</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Empty Room</th>
+                            <th scope="col">Filled Room</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($kost as $k) : ?>
+                            <tr>
+                                <td data-label="Location"><?= $k['location']; ?></td>
+                                <td data-label="Room Size"><?= $k['room_size']; ?></td>
+                                <td data-label="Total Room"><?= $k['room_qty']; ?></td>
+                                <td data-label="Facility"><?= $k['price']; ?></td>
+                                <td data-label="Empty Room"><?= $k['empty']; ?></td>
+                                <td data-label="Filled Room"><?= $k['filled']; ?></td>
+                                <td data-label="Action">
+                                    <a style="margin-right: 10px; padding: 4px; background-color: red;color:aliceblue;" onclick="return confirm('are you sure want to delete this kost?')" href="<?= base_url('admin/deleteKost/'); ?><?= $k['id']; ?>" class="remove"><i class='bx bx-minus'></i></a>
+
+                                    <a href="<?= base_url('admin/editKost/'); ?><?= $k['id']; ?>" id="btn-edit" class="btn edit" title="edit" style="margin-right: 10px;color:aliceblue; padding: 4px; background-color: green;"><i class='bx bx-edit'></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
 

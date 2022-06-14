@@ -18,19 +18,14 @@
                             <?= form_error('name', ' <small class="text-danger">', '</small>'); ?>
                         </div>
                         <div class="row-input">
-                            <label for="name">No Telp</label>
+                            <label for="number">No Telp</label>
                             <input type="number" name="telp" id="telp" value="<?= $u['telp']; ?>">
                             <?= form_error('telp', ' <small class="text-danger">', '</small>'); ?>
                         </div>
                         <div class="row-input">
-                            <label for="name">Kost</label>
+                            <label for="kost">Kost</label>
                             <input type="text" name="kost" id="kost" value="<?= $u['kost']; ?>">
                             <?= form_error('kost', ' <small class="text-danger">', '</small>'); ?>
-                        </div>
-                        <div class="row-input">
-                            <label for="name">Member Since</label>
-                            <input type="date" class="form-control" name="member_since" value="<?php echo isset($itemOutData->member_since) ? set_value('member_since', date('Y-m-d', strtotime($itemOutData->member_since))) : set_value('member_since'); ?>">
-                            <?= form_error('member_since', ' <small class="text-danger">', '</small>'); ?>
                         </div>
                         <div class="btn">
                             <button type="submit" class="btn-save">Save</button>

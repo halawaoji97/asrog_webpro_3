@@ -41,6 +41,17 @@
 
         <div class="table-payment">
             <div class="box">
+                <div class="action" style="display: flex; ">
+                    <a href="<?= base_url('laporan/cetak_laporan_bukti_booking'); ?>" class="btn-print" title="Print">
+                        <i class='bx bx-printer'></i>
+                    </a>
+                    <a href="<?= base_url('laporan/laporan_bukti_booking_pdf'); ?>" class="btn-pdf" title="PDF">
+                        <i class='bx bxs-file-pdf'></i>
+                    </a>
+                    <a href="<?= base_url('laporan/export_excel_bukti_booking'); ?>" class="btn-excel" title="Excel">
+                        <i class='bx bx-receipt'></i>
+                    </a>
+                </div>
                 <table>
                     <thead>
                         <tr>
